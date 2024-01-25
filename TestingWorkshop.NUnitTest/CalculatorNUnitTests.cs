@@ -114,4 +114,49 @@ public class CalculatorNUnitTests
         //Assert.That(evenResult, Is.True);
         //Assert.That(evenResult, Is.EqualTo(true));
     }
+
+    [Test]
+    [TestCase(11)]
+    [TestCase(13)]
+    public void IsNumberOdd_InputOddInt_ReturnTrue(int num)
+    {
+        // Arrange
+        Calculator calculator = new Calculator();
+
+        // Act
+        bool oddResult = calculator.IsNumberOdd(num);
+
+        // Assert
+        Assert.IsTrue(oddResult);
+        //Assert.That(oddResult, Is.True);
+        //Assert.That(oddResult, Is.EqualTo(true));
+    }
+
+    [Test]
+    [TestCase(10, ExpectedResult = false)]
+    [TestCase(11, ExpectedResult = true)]
+    public bool IsNumberOdd_InputInt_ReturnTrueIfOdd(int num)
+    {
+        // Arrange
+        Calculator calculator = new Calculator();
+
+        // Act + Assert
+        return calculator.IsNumberOdd(num);
+    }
+
+    [Test]
+    [TestCase(5.4, 10.5)] // 15.9
+    [TestCase(5.43, 10.53)] // 15.959999..
+    [TestCase(5.49, 10.59)] // 16.08
+    public void AddDoubleNumbers_InputTwoDouble_GetCorrectAddition(double num1, double num2)
+    {
+        // Arrange
+        Calculator calculator = new Calculator();
+
+        // Act
+        double doubleResult = calculator.AddDoubleNumbers(num1, num2);
+
+        // Act + Assert
+        Assert.AreEqual(15.9, doubleResult, .2);  // Delta value is 0.2 so it accepts results between 15.7-16.1
+    }
 }
