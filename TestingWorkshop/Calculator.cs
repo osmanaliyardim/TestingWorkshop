@@ -2,6 +2,8 @@
 
 public class Calculator
 {
+    public List<int> NumberRange = new();
+
     public int AddNumbers(int num1, int num2)
     {
         return num1 + num2;
@@ -35,5 +37,20 @@ public class Calculator
     public bool IsNumberEven(int num)
     {
         return num % 2 == 0;
+    }
+
+    public List<int> GetOddRange(int min, int max)
+    {
+        NumberRange.Clear();
+
+        for (int i = min; i <= max; i++)
+        {
+            if (i % 2 != 0)
+            {
+                NumberRange.Add(i);
+            }
+        }
+
+        return NumberRange;
     }
 }
