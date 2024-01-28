@@ -1,5 +1,6 @@
 ﻿namespace TestingWorkshop.NUnitTest;
 
+[TestFixture]
 public class GradingCalculatorNUnitTests
 {
     private GradingCalculator gradingCalculator;
