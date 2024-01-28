@@ -159,4 +159,26 @@ public class CalculatorNUnitTests
         // Act + Assert
         Assert.AreEqual(15.9, doubleResult, .2);  // Delta value is 0.2 so it accepts results between 15.7-16.1
     }
+
+    [Test]
+    public void GetOddRange_InputMinAndMaxRange_ReturnsValidOddNumberRange()
+    {
+        // Arrange
+        Calculator calculator = new Calculator();
+        List<int> expectedOddRange = new() { 5, 7, 9 }; // Odd numbers between 5-10
+
+        // Act
+        var result = calculator.GetOddRange(5, 10);
+
+        // Assert
+        Assert.That(result, Is.EquivalentTo(expectedOddRange));
+        //Assert.AreEqual(expectedOddRange, result);
+        //Assert.Contains(7, result);
+        Assert.That(result, Does.Contain(7));
+        Assert.That(result, Is.Not.Empty);
+        Assert.That(result.Count, Is.EqualTo(3));
+        Assert.That(result, Has.No.Member(8));
+        Assert.That(result, Is.Ordered.Ascending);
+        Assert.That(result, Is.Unique);
+    }
 }
